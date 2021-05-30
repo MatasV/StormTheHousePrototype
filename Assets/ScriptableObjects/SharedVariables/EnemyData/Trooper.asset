@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a770168958677d24f9abb90b0167ba45, type: 3}
   m_Name: Trooper
   m_EditorClassIdentifier: 
-  damage: 15
+  damage: 1
   distanceFromHouseToAttack: 10
   speed: 1
-  fireRate: 0.5
+  fireRate: 1
+  enemyPrefab: {fileID: 6488456909601317061, guid: fc38ccad3bd0065418cf8bcac5a6179e, type: 3}
