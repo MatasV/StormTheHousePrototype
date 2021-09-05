@@ -36,7 +36,17 @@ public class GunInfoDisplay : MonoBehaviour
     private void DisplayGunInfo(Gun gun)
     {
         gunSpriteImage.sprite = gun.gunData.sprite;
-        gunCostText.text = gun.gunData.costToPurchase.ToString();
+
+        if (gun.gunData.costToPurchase == 0 || gun.gunData.purchased)
+        {
+            gunCostText.gameObject.SetActive(false);
+        }
+        else
+        {
+            gunCostText.gameObject.SetActive(true);
+            gunCostText.text = gun.gunData.costToPurchase.ToString();
+        }
+        
         gunNameText.text = gun.gunData.gunName;
 
         var children = upgradeButtonsParent.GetComponentsInChildren<GunUpgrade>();

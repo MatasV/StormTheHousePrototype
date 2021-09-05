@@ -15,7 +15,6 @@ public class GunData : ScriptableObject
         public float startingValue;
         public float valueIncrement;
         public float maxValue;
-
         public delegate void OnUpgrade(UpgradeableItem item);
         public OnUpgrade onUpgraded;
         
@@ -51,4 +50,5 @@ public class GunData : ScriptableObject
     public float accuracy;
     public Sprite sprite;
     public int costToPurchase;
+    public bool purchased;
 }

@@ -41,6 +41,7 @@ public class HouseManager : MonoBehaviour
     private void SyncUpgrades()
     {
         houseHealth.maxHealth.Value = healthUpgrade.level * 100;
+        houseHealth.Value = houseHealth.maxHealth.Value;
     }
 
     private void OnDestroy()
