@@ -2,24 +2,26 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class EquippedGunDisplay : MonoBehaviour
 {
-    [SerializeField] private SharedGun firstGun;
+    [FormerlySerializedAs("firstGun")] [SerializeField] private SharedGun gun;
     [SerializeField] private Image gunDisplay;
     private void Awake()
     {
-        firstGun.valueChangeEvent.AddListener(DisplayGun);
+        gun.valueChangeEvent.AddListener(DisplayGun);
     }
 
     private void DisplayGun()
     {
-        gunDisplay.sprite = firstGun.Value?.gunData.sprite;
+        if(gun.Value != null)
+            gunDisplay.sprite = gun.Value.gunData.sprite;
     }
 
     private void OnDestroy()
     {
-        firstGun.valueChangeEvent.RemoveListener(DisplayGun);
+        gun.valueChangeEvent.RemoveListener(DisplayGun);
     }
 }

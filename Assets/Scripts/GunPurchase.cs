@@ -11,12 +11,8 @@ public class GunPurchase : MonoBehaviour
     public delegate void OnGunSelected(Gun gun);
 
     public OnGunSelected onGunSelected;
-
-    public void SelectGun()
-    {
-        onGunSelected?.Invoke(gun);
-    }
-
+    
+    
     private void Start()
     {
         gun?.Init();

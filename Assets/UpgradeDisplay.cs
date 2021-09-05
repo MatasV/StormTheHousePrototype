@@ -9,11 +9,11 @@ public class UpgradeDisplay : MonoBehaviour
     [SerializeField] private TMP_Text repairmenDisplay;
     [SerializeField] private TMP_Text shooterDisplay;
     [SerializeField] private TMP_Text wallLevelDisplay;
-
+    
     [SerializeField] private Upgrade repairmenUpgrade;
     [SerializeField] private Upgrade shooterUpgrade;
     [SerializeField] private Upgrade wallUpgrade;
-
+    
     private void Awake()
     {
         repairmenUpgrade.onUpgradeChanged.AddListener(DisplayRepairmen);

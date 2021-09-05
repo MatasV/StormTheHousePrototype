@@ -51,4 +51,5 @@ public class GunData : ScriptableObject
     public Sprite sprite;
     public int costToPurchase;
     public bool purchased;
+    [TextArea(3,10)] public string description;
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfd9fff0d37f48069aed53ba66fb8d98, type: 3}
-  m_Name: PistolData
+  m_Name: UziData
   m_EditorClassIdentifier: 
   upgradeItemsList:
   - upgradeType: 0
@@ -28,14 +28,15 @@ MonoBehaviour:
     startingValue: 0
     valueIncrement: 0.1
     maxValue: 1.5
-  gunName: Desert Eagle
+  gunName: Uzi
   currentAmmo: 7
-  damage: 5
+  damage: 20
   maxAmmo: 7
-  fireRate: 0
-  reloadTime: 3
-  accuracy: 1.6
-  sprite: {fileID: 21300000, guid: 86ed9533d59cdae4bb652af7d3590c9a, type: 3}
-  costToPurchase: 0
-  purchased: 1
-  description: Pew Pew
+  fireRate: 2
+  reloadTime: 1.5
+  accuracy: 2
+  sprite: {fileID: 21300000, guid: 4e1172764b94bfc44886fb2ffe55eeb5, type: 3}
+  costToPurchase: 800
+  purchased: 0
+  description: A drive-by favorite, the uzi is an affordable fully automatic solution
+    to all your sem-automatic problems.

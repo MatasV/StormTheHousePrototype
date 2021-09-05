@@ -6,28 +6,48 @@ using Random = UnityEngine.Random;
 
 public class GunManager : MonoBehaviour
 {
-    public SharedGun firstGun;
-    public SharedGun secondGun;
-    public Transform target;
+    [SerializeField] private SharedGun firstGun;
+    [SerializeField] private SharedGun secondGun;
+    [SerializeField] private Transform target;
+    
+    [SerializeField] private Gun startingFirstGun;
+    [SerializeField] private Gun startingSecondGun;
+    
     private Camera mainCam;
 
     private float accuracyDecr = 1.0f;
 
     [SerializeField] private SharedBool isDayRunning;
 
+    
     private void Start()
     {
         mainCam = Camera.main;
+        ResetGuns();
+    }
+
+    private void ResetGuns()
+    {
+        if (startingFirstGun != null)
+            firstGun.Value = startingFirstGun;
+        else
+            Debug.LogWarning("First Gun should not be set to null");
+        
+        secondGun.Value = startingSecondGun != null ? startingSecondGun : null;
     }
 
     private void OnDestroy()
     {
         isDayRunning.valueChangeEvent.RemoveListener(RoundStart);
+        firstGun.valueChangeEvent.RemoveListener(()=>EquipFirstGun(firstGun.Value));
+        secondGun.valueChangeEvent.RemoveListener(()=>EquipSecondGun(secondGun.Value));
     }
 
     private void Awake()
     {
         isDayRunning.valueChangeEvent.AddListener(RoundStart);
+        firstGun.valueChangeEvent.AddListener(()=>EquipFirstGun(firstGun.Value));
+        secondGun.valueChangeEvent.AddListener(()=>EquipSecondGun(secondGun.Value));
     }
 
     public void RoundStart()
@@ -51,15 +71,11 @@ public class GunManager : MonoBehaviour
     {
         if (gun == null) return;
         firstGun.Value.onReload.RemoveAllListeners();
-        var bufferGun = firstGun.Value;
-        firstGun.Value = gun;
-        secondGun.Value = bufferGun;
     }
 
     public void EquipSecondGun(Gun gun)
     {
         if (gun == null) return;
-        secondGun.Value = gun;
     }
 
     private void Update()
@@ -91,7 +107,7 @@ public class GunManager : MonoBehaviour
             firstGun.Value.Shoot(shootingPosWithAccuracy);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) //Remove this
         {
             if(!firstGun.Value.reloading && secondGun.Value != null)
                 EquipFirstGun(secondGun.Value);

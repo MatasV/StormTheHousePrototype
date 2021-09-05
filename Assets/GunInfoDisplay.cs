@@ -7,16 +7,27 @@ using UnityEngine.UI;
 
 public class GunInfoDisplay : MonoBehaviour
 {
+    [SerializeField] private SharedGun firstGun;
+    [SerializeField] private SharedGun secondGun;
+    [SerializeField] private SharedInt money;
     
-    [SerializeField] private Image gunSpriteImage;
-    [SerializeField] private TMP_Text gunCostText;
-    [SerializeField] private TMP_Text gunNameText;
+    [Header("Gun Purchased Info")]
+    [SerializeField] private Image gunPurchasedSpriteImage;
+    [SerializeField] private TMP_Text gunPurchasedNameText;
+    [SerializeField] private GameObject purchasedInfoHolder;
+    
+    [Header("Gun Not Purchased Info")]
+    [SerializeField] private Image gunNotPurchasedSpriteImage;
+    [SerializeField] private TMP_Text gunNotPurchasedCostText;
+    [SerializeField] private TMP_Text gunNotPurchasedNameText;
+    [SerializeField] private TMP_Text gunNotPurchasedDescriptionText;
+    [SerializeField] private GameObject notPurchasedInfoHolder;
+    [SerializeField] private Button purchaseButton;
     
     [Header("Upgrade Display")]
     [SerializeField] private Transform gunDisplayTransform;
     [SerializeField] private Transform upgradeButtonsParent;
     [SerializeField] private GameObject upgradeUIObject;
-    
     
     private void Start()
     {
@@ -35,31 +46,47 @@ public class GunInfoDisplay : MonoBehaviour
 
     private void DisplayGunInfo(Gun gun)
     {
-        gunSpriteImage.sprite = gun.gunData.sprite;
-
-        if (gun.gunData.costToPurchase == 0 || gun.gunData.purchased)
+        if (!gun.gunData.purchased)
         {
-            gunCostText.gameObject.SetActive(false);
+            notPurchasedInfoHolder.SetActive(true);
+            purchasedInfoHolder.SetActive(false);
+            
+            gunNotPurchasedSpriteImage.sprite = gun.gunData.sprite;
+            gunNotPurchasedCostText.text = "$"+gun.gunData.costToPurchase.ToString();
+            gunNotPurchasedNameText.text = gun.gunData.gunName;
+            gunNotPurchasedDescriptionText.text = gun.gunData.description;
+            
+            purchaseButton.onClick.RemoveAllListeners();
+            purchaseButton.onClick.AddListener(()=>Purchase(gun));
         }
         else
         {
-            gunCostText.gameObject.SetActive(true);
-            gunCostText.text = gun.gunData.costToPurchase.ToString();
-        }
-        
-        gunNameText.text = gun.gunData.gunName;
+            purchasedInfoHolder.SetActive(true);
+            notPurchasedInfoHolder.SetActive(false);
+            
+            gunPurchasedSpriteImage.sprite = gun.gunData.sprite;
+            gunPurchasedNameText.text = gun.gunData.gunName;
 
-        var children = upgradeButtonsParent.GetComponentsInChildren<GunUpgrade>();
-        for (var index = 0; index < children.Length; index++)
-        {
-            var gunUpgrade = children[index];
-            gunUpgrade.UpdateInfo(gun.gunData.upgradeItemsList[index]);
+            var children = upgradeButtonsParent.GetComponentsInChildren<GunUpgrade>();
+            for (var index = 0; index < children.Length; index++)
+            {
+                var gunUpgrade = children[index];
+                gunUpgrade.UpdateInfo(gun.gunData.upgradeItemsList[index]);
+            }
         }
     }
 
-    public void Purchase()
+    public void Purchase(Gun gun)
     {
-        
+        if (money.Value >= gun.gunData.costToPurchase)
+        {
+            money.Value -= gun.gunData.costToPurchase;
+
+            secondGun.Value = firstGun.Value;
+            firstGun.Value = gun;
+
+            gun.gunData.purchased = true;
+        }
     }
     
 }
