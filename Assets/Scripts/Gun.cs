@@ -17,8 +17,9 @@ public abstract class Gun : ScriptableObject
     public UnityEvent onShoot = new UnityEvent();
     public bool reloading;
 
-    public virtual void Init()
+    public virtual void Init() //Reset GunData Values
     {
+        gunData.purchased = gunData.purchasedAtStart;
         foreach (var item in gunData.upgradeItemsList)
         {
             item.Init();
@@ -49,8 +50,5 @@ public abstract class Gun : ScriptableObject
         reloading = false;
     }
 
-    public virtual void Finalize() //Reset Value
-    {
-        gunData.purchased = gunData.purchasedAtStart;
-    }
+    public virtual void Finalize(){}
 }

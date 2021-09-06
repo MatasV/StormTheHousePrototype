@@ -14,30 +14,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeItemsList:
   - upgradeType: 0
-    value: 1.4
-    startingValue: 1.4
-    valueIncrement: 0.1
-    maxValue: 3
+    value: 2
+    startingValue: 2
+    valueIncrement: 0.05
+    maxValue: 2.4
+    timesUpgraded: 1
+    startingCost: 400
+    costIncrement: 1.2
   - upgradeType: 3
-    value: 7
-    startingValue: 7
+    value: 20
+    startingValue: 20
     valueIncrement: 1
-    maxValue: 12
+    maxValue: 30
+    timesUpgraded: 1
+    startingCost: 100
+    costIncrement: 1.2
   - upgradeType: 2
-    value: 0
-    startingValue: 0
-    valueIncrement: 0.1
-    maxValue: 1.5
+    value: 1.5
+    startingValue: 1.5
+    valueIncrement: 0.2
+    maxValue: 2.5
+    timesUpgraded: 1
+    startingCost: 300
+    costIncrement: 1.2
   gunName: Uzi
-  currentAmmo: 7
+  currentAmmo: 20
   damage: 20
-  maxAmmo: 7
+  maxAmmo: 20
   fireRate: 2
-  reloadTime: 3
-  accuracy: 1.6
+  reloadTime: 1.5
+  accuracy: 1
   sprite: {fileID: 21300000, guid: 4e1172764b94bfc44886fb2ffe55eeb5, type: 3}
   costToPurchase: 800
-  purchased: 1
+  purchased: 0
   purchasedAtStart: 0
   description: A drive-by favorite, the uzi is an affordable fully automatic solution
     to all your sem-automatic problems.

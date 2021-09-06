@@ -15,12 +15,18 @@ public class GunData : ScriptableObject
         public float startingValue;
         public float valueIncrement;
         public float maxValue;
+
+        public int timesUpgraded;
+        
+        public int startingCost;
+        public float costIncrement;
         public delegate void OnUpgrade(UpgradeableItem item);
         public OnUpgrade onUpgraded;
         
         public int GetCostForNextLevel()
         {
-            return (int) (startingValue + (value * valueIncrement));
+            if (timesUpgraded == 0) return startingCost;
+            else return (int)(startingCost * (timesUpgraded * costIncrement));
         }
         
         public void Upgrade(SharedInt money)
@@ -29,6 +35,7 @@ public class GunData : ScriptableObject
             {
                 money.Value -= GetCostForNextLevel();
                 value += valueIncrement;
+                timesUpgraded++;
                 onUpgraded?.Invoke(this);
             }
         }
@@ -36,6 +43,7 @@ public class GunData : ScriptableObject
         public void Init()
         {
             value = startingValue;
+            timesUpgraded = 0;
         }
     }
     
