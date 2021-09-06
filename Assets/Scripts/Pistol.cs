@@ -47,7 +47,7 @@ public class Pistol : Gun
 
     private void SyncAccuracy(GunData.UpgradeableItem accuracyItem)
     {
-        gunData.accuracy = 3-accuracyItem.value;
+        gunData.accuracy = accuracyItem.maxValue-accuracyItem.value;
     }
 
     private void SyncAmmo(GunData.UpgradeableItem ammoItem)

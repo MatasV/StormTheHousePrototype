@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunUpgrade : MonoBehaviour
 {
@@ -11,22 +14,31 @@ public class GunUpgrade : MonoBehaviour
     [Header("Display")] 
     [SerializeField] private TMP_Text costText;
     [SerializeField] private TMP_Text upgradeNameText;
-    public void UpdateInfo(GunData.UpgradeableItem _item)
+    [SerializeField] private TMP_Text currentUpgradeValueText;
+    [SerializeField] private Button UpgradeButton;
+    public void Init(GunData.UpgradeableItem _item)
     {
         if (item != null) item.onUpgraded -= UpdateInfo;
-        
         item = _item;
-        
         item.onUpgraded += UpdateInfo;
-        
-        //todo add stuff here
-        
+        UpgradeButton.onClick.AddListener(UpgradeGun);
+        UpdateInfo(item);
+    }
+
+    public void UpdateInfo(GunData.UpgradeableItem _)
+    {
+        costText.text = "$" + item.GetCostForNextLevel();
+        upgradeNameText.text = item.upgradeType.ToString();
+        currentUpgradeValueText.text = item.value.ToString(CultureInfo.InvariantCulture);
     }
 
     public void UpgradeGun()
     {
-        
-        
-        UpdateInfo(item);
+        item.Upgrade(playerMoney);
+    }
+
+    private void OnDestroy()
+    {
+        UpgradeButton.onClick.RemoveListener(UpgradeGun);
     }
 }

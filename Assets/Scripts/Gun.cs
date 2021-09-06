@@ -19,7 +19,6 @@ public abstract class Gun : ScriptableObject
 
     public virtual void Init()
     {
-        _initialGunData = gunData;
         foreach (var item in gunData.upgradeItemsList)
         {
             item.Init();
@@ -50,8 +49,8 @@ public abstract class Gun : ScriptableObject
         reloading = false;
     }
 
-    public virtual void Finalize()
+    public virtual void Finalize() //Reset Value
     {
-        gunData = _initialGunData;
+        gunData.purchased = gunData.purchasedAtStart;
     }
 }

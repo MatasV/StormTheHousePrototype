@@ -9,19 +9,20 @@ public class GunPurchase : MonoBehaviour
     [SerializeField] private Gun gun;
 
     public delegate void OnGunSelected(Gun gun);
-
     public OnGunSelected onGunSelected;
-    
     
     private void Start()
     {
-        gun?.Init();
+        if (gun == null) return;
+        gun.Init();
+        gun.gunData.purchased = gun.gunData.purchasedAtStart;
         GetComponent<Button>().onClick.AddListener(()=>onGunSelected.Invoke(gun));
     }
 
     private void OnDestroy()
     {
-        gun?.Finalize();
+        if (gun == null) return;
+        gun.Finalize();
         GetComponent<Button>().onClick.RemoveListener(()=>onGunSelected.Invoke(gun));
     }
 }

@@ -10,25 +10,28 @@ public class GunInfoDisplay : MonoBehaviour
     [SerializeField] private SharedGun firstGun;
     [SerializeField] private SharedGun secondGun;
     [SerializeField] private SharedInt money;
-    
-    [Header("Gun Purchased Info")]
-    [SerializeField] private Image gunPurchasedSpriteImage;
+
+    [Header("Gun Purchased Info")] [SerializeField]
+    private Image gunPurchasedSpriteImage;
+
     [SerializeField] private TMP_Text gunPurchasedNameText;
     [SerializeField] private GameObject purchasedInfoHolder;
-    
-    [Header("Gun Not Purchased Info")]
-    [SerializeField] private Image gunNotPurchasedSpriteImage;
+
+    [Header("Gun Not Purchased Info")] [SerializeField]
+    private Image gunNotPurchasedSpriteImage;
+
     [SerializeField] private TMP_Text gunNotPurchasedCostText;
     [SerializeField] private TMP_Text gunNotPurchasedNameText;
     [SerializeField] private TMP_Text gunNotPurchasedDescriptionText;
     [SerializeField] private GameObject notPurchasedInfoHolder;
     [SerializeField] private Button purchaseButton;
-    
-    [Header("Upgrade Display")]
-    [SerializeField] private Transform gunDisplayTransform;
+
+    [Header("Upgrade Display")] [SerializeField]
+    private Transform gunDisplayTransform;
+
     [SerializeField] private Transform upgradeButtonsParent;
     [SerializeField] private GameObject upgradeUIObject;
-    
+
     private void Start()
     {
         Setup();
@@ -50,28 +53,33 @@ public class GunInfoDisplay : MonoBehaviour
         {
             notPurchasedInfoHolder.SetActive(true);
             purchasedInfoHolder.SetActive(false);
-            
+
             gunNotPurchasedSpriteImage.sprite = gun.gunData.sprite;
-            gunNotPurchasedCostText.text = "$"+gun.gunData.costToPurchase.ToString();
+            gunNotPurchasedCostText.text = "$" + gun.gunData.costToPurchase.ToString();
             gunNotPurchasedNameText.text = gun.gunData.gunName;
             gunNotPurchasedDescriptionText.text = gun.gunData.description;
-            
+
             purchaseButton.onClick.RemoveAllListeners();
-            purchaseButton.onClick.AddListener(()=>Purchase(gun));
+            purchaseButton.onClick.AddListener(() => Purchase(gun));
         }
         else
         {
             purchasedInfoHolder.SetActive(true);
             notPurchasedInfoHolder.SetActive(false);
-            
+
             gunPurchasedSpriteImage.sprite = gun.gunData.sprite;
             gunPurchasedNameText.text = gun.gunData.gunName;
 
-            var children = upgradeButtonsParent.GetComponentsInChildren<GunUpgrade>();
-            for (var index = 0; index < children.Length; index++)
+            var children = upgradeButtonsParent.childCount;
+            for (int i = children - 1; i >= 0; i--)
             {
-                var gunUpgrade = children[index];
-                gunUpgrade.UpdateInfo(gun.gunData.upgradeItemsList[index]);
+                Destroy(upgradeButtonsParent.GetChild(i).gameObject);
+            }
+
+            for (var i = 0; i < gun.gunData.upgradeItemsList.Count; i++)
+            {
+                var upgradeUI = Instantiate(upgradeUIObject, upgradeButtonsParent).GetComponent<GunUpgrade>();
+                upgradeUI.Init(gun.gunData.upgradeItemsList[i]);
             }
         }
     }
@@ -86,7 +94,8 @@ public class GunInfoDisplay : MonoBehaviour
             firstGun.Value = gun;
 
             gun.gunData.purchased = true;
+            
+            DisplayGunInfo(gun);
         }
     }
-    
 }
