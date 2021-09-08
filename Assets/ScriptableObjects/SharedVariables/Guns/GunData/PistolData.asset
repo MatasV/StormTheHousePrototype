@@ -14,36 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeItemsList:
   - upgradeType: 0
-    value: 1.4
+    value: 1.9000001
     startingValue: 1.4
     valueIncrement: 0.1
     maxValue: 1.9
-    timesUpgraded: 0
+    timesUpgraded: 5
     startingCost: 200
     costIncrement: 1.2
   - upgradeType: 3
-    value: 7
+    value: 10
     startingValue: 7
     valueIncrement: 1
     maxValue: 14
-    timesUpgraded: 0
+    timesUpgraded: 3
     startingCost: 100
     costIncrement: 1.2
   - upgradeType: 2
-    value: 1.5
+    value: 3
     startingValue: 1.5
     valueIncrement: 0.5
     maxValue: 4
-    timesUpgraded: 0
+    timesUpgraded: 3
     startingCost: 100
     costIncrement: 1.2
   gunName: Desert Eagle
   currentAmmo: 7
   damage: 5
-  maxAmmo: 7
+  maxAmmo: 10
   fireRate: 0
-  reloadTime: 1.5
-  accuracy: 0.5
+  reloadTime: 0
+  accuracy: -0.00000011920929
   sprite: {fileID: 21300000, guid: 86ed9533d59cdae4bb652af7d3590c9a, type: 3}
   costToPurchase: 0
   purchased: 1

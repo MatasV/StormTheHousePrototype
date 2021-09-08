@@ -18,7 +18,7 @@ MonoBehaviour:
     startingValue: 2
     valueIncrement: 0.05
     maxValue: 2.4
-    timesUpgraded: 1
+    timesUpgraded: 0
     startingCost: 400
     costIncrement: 1.2
   - upgradeType: 3
@@ -26,7 +26,7 @@ MonoBehaviour:
     startingValue: 20
     valueIncrement: 1
     maxValue: 30
-    timesUpgraded: 1
+    timesUpgraded: 0
     startingCost: 100
     costIncrement: 1.2
   - upgradeType: 2
@@ -34,7 +34,7 @@ MonoBehaviour:
     startingValue: 1.5
     valueIncrement: 0.2
     maxValue: 2.5
-    timesUpgraded: 1
+    timesUpgraded: 0
     startingCost: 300
     costIncrement: 1.2
   gunName: Uzi

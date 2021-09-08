@@ -15,7 +15,7 @@ public class GunInfoDisplay : MonoBehaviour
     private Image gunPurchasedSpriteImage;
 
     [SerializeField] private TMP_Text gunPurchasedNameText;
-    [SerializeField] private GameObject purchasedInfoHolder;
+  
 
     [Header("Gun Not Purchased Info")] [SerializeField]
     private Image gunNotPurchasedSpriteImage;
@@ -23,7 +23,7 @@ public class GunInfoDisplay : MonoBehaviour
     [SerializeField] private TMP_Text gunNotPurchasedCostText;
     [SerializeField] private TMP_Text gunNotPurchasedNameText;
     [SerializeField] private TMP_Text gunNotPurchasedDescriptionText;
-    [SerializeField] private GameObject notPurchasedInfoHolder;
+    
     [SerializeField] private Button purchaseButton;
 
     [Header("Upgrade Display")] [SerializeField]
@@ -31,6 +31,9 @@ public class GunInfoDisplay : MonoBehaviour
 
     [SerializeField] private Transform upgradeButtonsParent;
     [SerializeField] private GameObject upgradeUIObject;
+
+
+    [SerializeField] private PurchasingPanelController purchasingPanelController;
 
     private void Start()
     {
@@ -45,14 +48,16 @@ public class GunInfoDisplay : MonoBehaviour
         {
             gunPurchase.onGunSelected += DisplayGunInfo;
         }
-    }
 
+        purchasingPanelController = GameObject.FindObjectOfType<PurchasingPanelController>();
+    }
+    
     private void DisplayGunInfo(Gun gun)
     {
         if (!gun.gunData.purchased)
         {
-            notPurchasedInfoHolder.SetActive(true);
-            purchasedInfoHolder.SetActive(false);
+            if(purchasingPanelController == null) Debug.LogWarning("Purchasing panel controller not found");
+            else purchasingPanelController.EnableGunPurchasePanel();
 
             gunNotPurchasedSpriteImage.sprite = gun.gunData.sprite;
             gunNotPurchasedCostText.text = "$" + gun.gunData.costToPurchase.ToString();
@@ -64,8 +69,8 @@ public class GunInfoDisplay : MonoBehaviour
         }
         else
         {
-            purchasedInfoHolder.SetActive(true);
-            notPurchasedInfoHolder.SetActive(false);
+            if(purchasingPanelController == null) Debug.LogWarning("Purchasing panel controller not found");
+            else purchasingPanelController.EnableGunUpgradePanel();
 
             gunPurchasedSpriteImage.sprite = gun.gunData.sprite;
             gunPurchasedNameText.text = gun.gunData.gunName;
