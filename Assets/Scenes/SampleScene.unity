@@ -1858,6 +1858,8 @@ GameObject:
   - component: {fileID: 267589837}
   - component: {fileID: 267589836}
   - component: {fileID: 267589835}
+  - component: {fileID: 267589838}
+  - component: {fileID: 267589839}
   m_Layer: 5
   m_Name: AssaultRiflePurchase
   m_TagString: Untagged
@@ -1967,6 +1969,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267589833}
   m_CullTransparentMesh: 1
+--- !u!114 &267589838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267589833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &267589839
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267589833}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &270820517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,6 +2475,8 @@ GameObject:
   - component: {fileID: 327805321}
   - component: {fileID: 327805320}
   - component: {fileID: 327805319}
+  - component: {fileID: 327805322}
+  - component: {fileID: 327805323}
   m_Layer: 5
   m_Name: ChainsawPurchase
   m_TagString: Untagged
@@ -2558,6 +2586,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327805317}
   m_CullTransparentMesh: 1
+--- !u!114 &327805322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327805317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &327805323
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327805317}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &363594928
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,6 +2622,8 @@ GameObject:
   - component: {fileID: 363594932}
   - component: {fileID: 363594931}
   - component: {fileID: 363594930}
+  - component: {fileID: 363594933}
+  - component: {fileID: 363594934}
   m_Layer: 5
   m_Name: FlameThrowerPurchase
   m_TagString: Untagged
@@ -2679,6 +2733,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363594928}
   m_CullTransparentMesh: 1
+--- !u!114 &363594933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363594928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &363594934
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363594928}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &381963940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2834,8 @@ GameObject:
   - component: {fileID: 401313576}
   - component: {fileID: 401313575}
   - component: {fileID: 401313574}
+  - component: {fileID: 401313577}
+  - component: {fileID: 401313578}
   m_Layer: 5
   m_Name: AutomaticShotgunPurchase
   m_TagString: Untagged
@@ -2865,6 +2945,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401313572}
   m_CullTransparentMesh: 1
+--- !u!114 &401313577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401313572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &401313578
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401313572}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &404238126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2907,7 +3011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -359.1751, y: -63.58612}
+  m_AnchoredPosition: {x: -359.17505, y: -63.58618}
   m_SizeDelta: {x: -718.3503, y: -127.1721}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &404238129
@@ -3501,6 +3605,8 @@ GameObject:
   - component: {fileID: 557538926}
   - component: {fileID: 557538925}
   - component: {fileID: 557538924}
+  - component: {fileID: 557538927}
+  - component: {fileID: 557538928}
   m_Layer: 5
   m_Name: OrbitalPurchase
   m_TagString: Untagged
@@ -3610,6 +3716,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557538922}
   m_CullTransparentMesh: 1
+--- !u!114 &557538927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557538922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &557538928
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557538922}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &573002024
 GameObject:
   m_ObjectHideFlags: 0
@@ -4177,7 +4307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.002075, y: 28.52069}
+  m_AnchoredPosition: {x: 11.001953, y: 28.52063}
   m_SizeDelta: {x: -22.005, y: 16.2974}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &635029884
@@ -6810,6 +6940,8 @@ GameObject:
   - component: {fileID: 1064333341}
   - component: {fileID: 1064333340}
   - component: {fileID: 1064333343}
+  - component: {fileID: 1064333344}
+  - component: {fileID: 1064333345}
   m_Layer: 5
   m_Name: UziPurchase
   m_TagString: Untagged
@@ -6932,6 +7064,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: c127682c08a51684ebc93c736ea907a8, type: 2}
+--- !u!114 &1064333344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064333338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1064333345
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064333338}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1065113164
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,6 +7100,8 @@ GameObject:
   - component: {fileID: 1065113168}
   - component: {fileID: 1065113167}
   - component: {fileID: 1065113166}
+  - component: {fileID: 1065113169}
+  - component: {fileID: 1065113170}
   m_Layer: 5
   m_Name: LaserGunPurchase
   m_TagString: Untagged
@@ -7053,6 +7211,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065113164}
   m_CullTransparentMesh: 1
+--- !u!114 &1065113169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065113164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1065113170
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065113164}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1085908779
 GameObject:
   m_ObjectHideFlags: 0
@@ -7148,6 +7330,8 @@ GameObject:
   - component: {fileID: 1087887513}
   - component: {fileID: 1087887512}
   - component: {fileID: 1087887511}
+  - component: {fileID: 1087887514}
+  - component: {fileID: 1087887515}
   m_Layer: 5
   m_Name: MinigunPurchase
   m_TagString: Untagged
@@ -7257,6 +7441,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1087887509}
   m_CullTransparentMesh: 1
+--- !u!114 &1087887514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087887509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1087887515
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087887509}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1108130291
 GameObject:
   m_ObjectHideFlags: 0
@@ -9649,6 +9857,8 @@ GameObject:
   - component: {fileID: 1432094640}
   - component: {fileID: 1432094639}
   - component: {fileID: 1432094638}
+  - component: {fileID: 1432094641}
+  - component: {fileID: 1432094642}
   m_Layer: 5
   m_Name: GranadeLauncherPurchase
   m_TagString: Untagged
@@ -9758,6 +9968,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432094636}
   m_CullTransparentMesh: 1
+--- !u!114 &1432094641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432094636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1432094642
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1432094636}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1455466021
 GameObject:
   m_ObjectHideFlags: 0
@@ -10075,6 +10309,8 @@ GameObject:
   - component: {fileID: 1506494735}
   - component: {fileID: 1506494734}
   - component: {fileID: 1506494733}
+  - component: {fileID: 1506494736}
+  - component: {fileID: 1506494737}
   m_Layer: 5
   m_Name: MachineGunPurchase
   m_TagString: Untagged
@@ -10184,6 +10420,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506494731}
   m_CullTransparentMesh: 1
+--- !u!114 &1506494736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506494731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1506494737
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506494731}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1521393308
 GameObject:
   m_ObjectHideFlags: 0
@@ -12595,6 +12855,8 @@ GameObject:
   - component: {fileID: 1915436911}
   - component: {fileID: 1915436910}
   - component: {fileID: 1915436909}
+  - component: {fileID: 1915436912}
+  - component: {fileID: 1915436913}
   m_Layer: 5
   m_Name: ShotgunPurchase
   m_TagString: Untagged
@@ -12704,6 +12966,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915436907}
   m_CullTransparentMesh: 1
+--- !u!114 &1915436912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915436907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1915436913
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915436907}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1921573967
 GameObject:
   m_ObjectHideFlags: 0
@@ -13490,7 +13776,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -311.97998, y: -38.263}
+  m_AnchoredPosition: {x: -311.97998, y: -38.26306}
   m_SizeDelta: {x: 503.61, y: -117.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2097225579
@@ -13898,6 +14184,8 @@ GameObject:
   - component: {fileID: 2139514064}
   - component: {fileID: 2139514063}
   - component: {fileID: 2139514066}
+  - component: {fileID: 2139514067}
+  - component: {fileID: 2139514068}
   m_Layer: 5
   m_Name: PistolPurchase
   m_TagString: Untagged
@@ -14020,3 +14308,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 11400000, guid: 77624115ed19592459c8676165d0637b, type: 2}
+--- !u!114 &2139514067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139514061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70aedeb582c3cc439515083ffc58f01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &2139514068
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2139514061}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

@@ -25,4 +25,9 @@ public class GunPurchase : MonoBehaviour
         gun.Finalize();
         GetComponent<Button>().onClick.RemoveListener(()=>onGunSelected.Invoke(gun));
     }
+
+    public Gun GetGun()
+    {
+        return gun;
+    }
 }
