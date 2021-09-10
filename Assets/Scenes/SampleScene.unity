@@ -1328,6 +1328,50 @@ MonoBehaviour:
   costDisplay: {fileID: 641923687}
   upgrade: {fileID: 11400000, guid: 849e4d79ec2a0574fbe5ea87d15dc2b3, type: 2}
   levelAtStart: 1
+--- !u!1 &204215009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204215010}
+  - component: {fileID: 204215011}
+  m_Layer: 0
+  m_Name: TowerSpot_Bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &204215010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204215009}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.318, y: -0.53, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 754654702}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &204215011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204215009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666a5c9293584234fa24654f508a7816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placedTower: {fileID: 0}
 --- !u!1 &206270826
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1647,7 @@ GameObject:
   - component: {fileID: 237346375}
   - component: {fileID: 237346374}
   - component: {fileID: 237346373}
+  - component: {fileID: 237346376}
   m_Layer: 5
   m_Name: LaserTurretPurchase
   m_TagString: Untagged
@@ -1712,6 +1757,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237346371}
   m_CullTransparentMesh: 1
+--- !u!114 &237346376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237346371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &254913468
 GameObject:
   m_ObjectHideFlags: 0
@@ -2139,7 +2197,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303801428}
-  - component: {fileID: 303801429}
   m_Layer: 5
   m_Name: TowerPurchasePanel
   m_TagString: Untagged
@@ -2158,7 +2215,11 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 697016834}
+  - {fileID: 1695964807}
+  - {fileID: 1301561374}
+  - {fileID: 1383311241}
+  - {fileID: 1903363663}
+  - {fileID: 1308899517}
   m_Father: {fileID: 776442971}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2167,18 +2228,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.0037384033}
   m_SizeDelta: {x: 503.61, y: 365.1541}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &303801429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303801427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1c688d791cdebb4e8cbc05c6c67a6ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &311212330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3169,6 +3218,66 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420837166}
   m_CullTransparentMesh: 1
+--- !u!1 &422643808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422643809}
+  - component: {fileID: 422643810}
+  m_Layer: 5
+  m_Name: TowerUpgradeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &422643809
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422643808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 776442971}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &422643810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422643808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c688d791cdebb4e8cbc05c6c67a6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  money: {fileID: 11400000, guid: 58b272c114294f44a868abb6eb9bfa9e, type: 2}
+  towerNotPurchasedSpriteImage: {fileID: 1903363664}
+  towerNotPurchasedCostText: {fileID: 1301561375}
+  towerNotPurchasedNameText: {fileID: 1695964808}
+  towerNotPurchasedDescriptionText: {fileID: 1308899518}
+  purchaseButton: {fileID: 1383311242}
+  towerPurchasedSpriteImage: {fileID: 1132918254}
+  towerPurchasedNameText: {fileID: 839949013}
+  towerDisplayTransform: {fileID: 104035551}
+  upgradeButtonsParent: {fileID: 1168120212}
+  upgradeUIObject: {fileID: 5929505174532356072, guid: a83c742f70bbd3f4d8a389c6c63217d5, type: 3}
+  purchasingPanelController: {fileID: 0}
 --- !u!1 &472017578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4743,86 +4852,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 687130539}
   m_CullTransparentMesh: 1
---- !u!1 &697016833
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 697016834}
-  - component: {fileID: 697016836}
-  - component: {fileID: 697016835}
-  m_Layer: 5
-  m_Name: TowerNotPurchasedPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &697016834
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697016833}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1695964807}
-  - {fileID: 1301561374}
-  - {fileID: 1383311241}
-  - {fileID: 1903363663}
-  - {fileID: 1308899517}
-  m_Father: {fileID: 303801428}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &697016835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697016833}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &697016836
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697016833}
-  m_CullTransparentMesh: 1
 --- !u!1 &736577878
 GameObject:
   m_ObjectHideFlags: 0
@@ -4940,7 +4969,10 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.92, y: -1.69, z: 0}
   m_LocalScale: {x: 3.4063604, y: 3.4064317, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1717408012}
+  - {fileID: 1567885424}
+  - {fileID: 204215010}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5067,6 +5099,7 @@ RectTransform:
   - {fileID: 1458652169}
   - {fileID: 303801428}
   - {fileID: 1216177742}
+  - {fileID: 422643809}
   m_Father: {fileID: 2095983597}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5945,6 +5978,7 @@ GameObject:
   - component: {fileID: 933143630}
   - component: {fileID: 933143629}
   - component: {fileID: 933143628}
+  - component: {fileID: 933143631}
   m_Layer: 5
   m_Name: RocketLauncherPurchase
   m_TagString: Untagged
@@ -6054,6 +6088,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933143626}
   m_CullTransparentMesh: 1
+--- !u!114 &933143631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933143626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &942845945
 GameObject:
   m_ObjectHideFlags: 0
@@ -7628,9 +7675,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c69247ad9a84abf40812bc1d8d000ae9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -7658,6 +7705,7 @@ GameObject:
   - component: {fileID: 1150208949}
   - component: {fileID: 1150208948}
   - component: {fileID: 1150208947}
+  - component: {fileID: 1150208950}
   m_Layer: 5
   m_Name: SolarTowerPurchase
   m_TagString: Untagged
@@ -7767,6 +7815,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150208945}
   m_CullTransparentMesh: 1
+--- !u!114 &1150208950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150208945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &1159635640
 GameObject:
   m_ObjectHideFlags: 0
@@ -8401,11 +8462,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301561373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 697016834}
+  m_Father: {fileID: 303801428}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -8535,11 +8596,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308899516}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 697016834}
+  m_Father: {fileID: 303801428}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -9228,12 +9289,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383311240}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1921573968}
-  m_Father: {fileID: 697016834}
+  m_Father: {fileID: 303801428}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
@@ -10598,6 +10659,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556205813}
   m_CullTransparentMesh: 1
+--- !u!1 &1567885423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567885424}
+  - component: {fileID: 1567885425}
+  m_Layer: 0
+  m_Name: TowerSpot_Middle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1567885424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567885423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.535, y: -0.199, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 754654702}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1567885425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567885423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666a5c9293584234fa24654f508a7816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placedTower: {fileID: 0}
 --- !u!1 &1575514419
 GameObject:
   m_ObjectHideFlags: 0
@@ -11201,11 +11306,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1695964806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 697016834}
+  m_Father: {fileID: 303801428}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -11677,6 +11782,7 @@ GameObject:
   - component: {fileID: 1712562093}
   - component: {fileID: 1712562092}
   - component: {fileID: 1712562091}
+  - component: {fileID: 1712562094}
   m_Layer: 5
   m_Name: GeneratorPurchase
   m_TagString: Untagged
@@ -11786,6 +11892,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712562089}
   m_CullTransparentMesh: 1
+--- !u!114 &1712562094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712562089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 11400000, guid: a78400075b9e9694ebc5d0b276be1354, type: 2}
+--- !u!1 &1717408011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1717408012}
+  - component: {fileID: 1717408013}
+  m_Layer: 0
+  m_Name: TowerSpot_Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1717408012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717408011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.734, y: 0.119, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 754654702}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1717408013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717408011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666a5c9293584234fa24654f508a7816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placedTower: {fileID: 0}
 --- !u!1 &1737910672
 GameObject:
   m_ObjectHideFlags: 0
@@ -12623,6 +12786,7 @@ GameObject:
   - component: {fileID: 1887860564}
   - component: {fileID: 1887860563}
   - component: {fileID: 1887860562}
+  - component: {fileID: 1887860565}
   m_Layer: 5
   m_Name: FanPurchase
   m_TagString: Untagged
@@ -12732,6 +12896,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887860560}
   m_CullTransparentMesh: 1
+--- !u!114 &1887860565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887860560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &1895166857
 GameObject:
   m_ObjectHideFlags: 0
@@ -12793,11 +12970,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903363662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 697016834}
+  m_Father: {fileID: 303801428}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12825,9 +13002,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c69247ad9a84abf40812bc1d8d000ae9, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -13211,6 +13388,7 @@ GameObject:
   - component: {fileID: 1968862635}
   - component: {fileID: 1968862634}
   - component: {fileID: 1968862633}
+  - component: {fileID: 1968862636}
   m_Layer: 5
   m_Name: MetalGlobePurchase
   m_TagString: Untagged
@@ -13320,6 +13498,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968862631}
   m_CullTransparentMesh: 1
+--- !u!114 &1968862636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968862631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &2044909107
 GameObject:
   m_ObjectHideFlags: 0
@@ -13482,6 +13673,7 @@ GameObject:
   - component: {fileID: 2058345039}
   - component: {fileID: 2058345038}
   - component: {fileID: 2058345037}
+  - component: {fileID: 2058345040}
   m_Layer: 5
   m_Name: FlameTrooperPurchase
   m_TagString: Untagged
@@ -13591,6 +13783,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058345035}
   m_CullTransparentMesh: 1
+--- !u!114 &2058345040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058345035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 689e0733064338b40bd33298deed2871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tower: {fileID: 0}
 --- !u!1 &2059028073
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,8 +26,8 @@ public class GunInfoDisplay : MonoBehaviour
     
     [SerializeField] private Button purchaseButton;
 
-    [Header("Upgrade Display")] [SerializeField]
-    private Transform gunDisplayTransform;
+    [Header("Upgrade Display")] 
+    [SerializeField] private Transform gunDisplayTransform;
 
     [SerializeField] private Transform upgradeButtonsParent;
     [SerializeField] private GameObject upgradeUIObject;
