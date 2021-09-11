@@ -25,11 +25,8 @@ public abstract class Gun : ScriptableObject
             item.Init();
         }
     }
-    
-    public virtual void Shoot(Vector3 position)
-    {
-        Debug.Log(" Shootin");
-    }
+
+    public abstract void Shoot(Vector3 position);
 
     public virtual void Reload()
     {
@@ -50,5 +47,5 @@ public abstract class Gun : ScriptableObject
         reloading = false;
     }
 
-    public virtual void Finalize(){}
+    public abstract void Finalize();
 }

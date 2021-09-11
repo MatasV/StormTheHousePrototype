@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
     {
         shootTime = 500f / shootersUpgrade.level / 60f;
     }
+
+    public Enemy[] GetActiveEnemies() => transform.GetComponentsInChildren<Enemy>();
     private void Shoot()
     {
         var enemies = transform.GetComponentsInChildren<Enemy>();
