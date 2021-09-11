@@ -84,8 +84,6 @@ public class Uzi : Gun
 
     public override void Finalize()
     {
-        base.Finalize();
-        
         var accUpgrade =
         gunData.upgradeItemsList.Find(x => x.upgradeType == GunData.UpgradeableItem.UpgradeType.Accuracy);
         accUpgrade.onUpgraded -= SyncAccuracy;

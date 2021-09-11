@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-public class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
     [FormerlySerializedAs("turretData")] public TowerData towerData;
     public UnityEvent onShoot = new UnityEvent();
@@ -48,6 +48,7 @@ public class Tower : MonoBehaviour
         public void Init()
         {
             value = startingValue;
+            Debug.Log("initing upgrade");
         }
     }
 
@@ -60,9 +61,6 @@ public class Tower : MonoBehaviour
             item.Init();
         }
     }
-    
-    public virtual void Shoot()
-    {
-        Debug.Log(" Shootin");
-    }
+
+    public abstract void Shoot();
 }

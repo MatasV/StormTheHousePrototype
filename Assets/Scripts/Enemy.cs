@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyType {Foot, Armored }
+    public EnemyType enemyType;
+    
     [SerializeField] private EnemyData enemyData;
     [SerializeField] private SharedFloat houseX;
     [SerializeField] private HouseHealth houseHealth;
@@ -18,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     private bool moving = false;
 
+    public List<StatusEffect> statusEffects = new List<StatusEffect>();
+    
     public virtual void Init()
     {
         enemyCount.Value++;
@@ -28,6 +33,20 @@ public class Enemy : MonoBehaviour
         moving = true;
     }
 
+    public void AddEffect(StatusEffect effect)
+    {
+        foreach (var statusEffect in statusEffects)
+        {
+            if (statusEffect.GetType() == effect.GetType())
+            {
+                statusEffect.timer += effect.timer;
+                return;
+            }
+        }
+
+        effect.enemy = this;
+        statusEffects.Add(effect);
+    }
     private void Update()
     {
         if (!moving) return;
@@ -41,6 +60,11 @@ public class Enemy : MonoBehaviour
         {
             moving = false;
             InvokeRepeating(nameof(DamageHouse), 0f, enemyData.fireRate);
+        }
+
+        foreach (var statusEffect in statusEffects)
+        {
+            statusEffect.Tick();
         }
     }
 
@@ -62,7 +86,11 @@ public class Enemy : MonoBehaviour
 
     public virtual void DamageHouse()
     {
-        //Play Damage Anim
         houseHealth.Value -= enemyData.damage;
+    }
+
+    public virtual void Trip()
+    {
+        Debug.Log("Tripped");
     }
 }

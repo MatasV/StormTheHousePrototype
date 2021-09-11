@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9135534317535725781}
-  - component: {fileID: 9135534317535725782}
   - component: {fileID: 9135534317535725780}
+  - component: {fileID: -5116273769102769340}
+  - component: {fileID: 582240708}
   m_Layer: 0
-  m_Name: Turret_QuakeBox
+  m_Name: Turret_Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,32 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9135534317535725782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9135534317535725783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b111391edfb46be9db8350d4e88bae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: a78400075b9e9694ebc5d0b276be1354, type: 2}
-  onShoot:
-    m_PersistentCalls:
-      m_Calls: []
-  upgradeItemsList:
-  - upgradeType: 7
-    value: 0
-    startingValue: 0
-    valueIncrement: 20
-    maxValue: 140
-    timesUpgraded: 0
-    startingCost: 500
-    costIncrement: 1.2
-  shootTimeInitialValue: 0
 --- !u!212 &9135534317535725780
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -99,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c69247ad9a84abf40812bc1d8d000ae9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83c4955e2b763604ab72bc12412953c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,3 +85,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5116273769102769340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9135534317535725783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0149ef4a86a661142acf00d54dadc312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 7af0e5339365d214383705bfefa08308, type: 2}
+  onShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  upgradeItemsList:
+  - upgradeType: 6
+    value: 0
+    startingValue: 0.04
+    valueIncrement: 0.01
+    maxValue: 0.08
+    timesUpgraded: 0
+    startingCost: 700
+    costIncrement: 1.2
+  - upgradeType: 3
+    value: 0
+    startingValue: 3.5
+    valueIncrement: 0.5
+    maxValue: 5.5
+    timesUpgraded: 0
+    startingCost: 1000
+    costIncrement: 1.2
+  fanRange: {fileID: 582240708}
+--- !u!61 &582240708
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9135534317535725783}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.187603, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.94, y: 0.97}
+    newSize: {x: 1.36, y: 1.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.5, y: 1.3816111}
+  m_EdgeRadius: 0
