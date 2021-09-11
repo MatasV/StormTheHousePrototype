@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3aad7355af6495d81420995b28766f0, type: 3}
   m_Name: QuakeBox
   m_EditorClassIdentifier: 
-  turretPrefab: {fileID: 0}
+  turretPrefab: {fileID: 9135534317535725783, guid: a3b57d9ef01a02d4091981172f077dc6, type: 3}
   towerName: Quake Box
   damage: 3
   fireRate: 1

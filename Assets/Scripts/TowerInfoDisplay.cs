@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,12 +23,22 @@ public class TowerInfoDisplay : MonoBehaviour
     [SerializeField] private Transform upgradeButtonsParent;
     [SerializeField] private GameObject upgradeUIObject;
 
-
     [SerializeField] private PurchasingPanelController purchasingPanelController;
+
+    [Header("Tower Placement Properties:")]
+    [SerializeField] private LayerMask whatIsBuildingSpot;
+    private GameObject towerToBuild;
+    private Vector3 mousePosition;
+    private bool buildingModeOn = false;
 
     private void Start()
     {
         Setup();
+    }
+
+    private void Update()
+    {
+        FollowMouse();
     }
 
     private void Setup()
@@ -42,7 +50,7 @@ public class TowerInfoDisplay : MonoBehaviour
             gunPurchase.onTowerSelected += DisplayNotPurchasedTowerInfo;
         }
 
-        purchasingPanelController = GameObject.FindObjectOfType<PurchasingPanelController>();
+        purchasingPanelController = FindObjectOfType<PurchasingPanelController>();
     }
 
     private void DisplayNotPurchasedTowerInfo(TowerData tower)
@@ -80,11 +88,35 @@ public class TowerInfoDisplay : MonoBehaviour
         }
     }
 
-    public void Purchase(TowerData tower) //enter placement phase
+    public void Purchase(TowerData tower)
     {
         if (money.Value >= tower.costToPurchase)
         {
+            towerToBuild = Instantiate(tower.turretPrefab);
+            buildingModeOn = true;
             money.Value -= tower.costToPurchase;
+        }
+    }
+
+    private void FollowMouse()
+    {
+        if (buildingModeOn != false && towerToBuild != null)
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            towerToBuild.transform.position = Vector2.Lerp(transform.position, mousePosition, 1f);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                RaycastHit2D hitInfo = Physics2D.Raycast(mousePosition, Vector2.zero, 100f, whatIsBuildingSpot);
+
+                if (hitInfo.collider != null)
+                {
+                    //hitInfo.transform.gameObject.GetComponent<TowerSpot>().placedTower = towerToBuild;
+                    towerToBuild.transform.position = hitInfo.transform.position;
+                    buildingModeOn = false;
+                    towerToBuild = null;
+                }
+            }
         }
     }
 }

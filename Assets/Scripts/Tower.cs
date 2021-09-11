@@ -10,7 +10,6 @@ public class Tower : MonoBehaviour
     [FormerlySerializedAs("turretData")] public TowerData towerData;
     public UnityEvent onShoot = new UnityEvent();
 
-    
     [Serializable]
     public class UpgradeableItem
     {
@@ -51,6 +50,7 @@ public class Tower : MonoBehaviour
             value = startingValue;
         }
     }
+
     public List<UpgradeableItem> upgradeItemsList = new List<UpgradeableItem>();
     
     public virtual void Init()
