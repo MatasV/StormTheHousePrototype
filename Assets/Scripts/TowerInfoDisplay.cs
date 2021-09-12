@@ -28,6 +28,7 @@ public class TowerInfoDisplay : MonoBehaviour
     [Header("Tower Placement Properties:")]
     [SerializeField] private LayerMask whatIsBuildingSpot;
     private GameObject towerToBuild;
+    private int towerToBuildValue;
     private Vector3 mousePosition;
     private bool buildingModeOn = false;
 
@@ -93,8 +94,11 @@ public class TowerInfoDisplay : MonoBehaviour
         if (money.Value >= tower.costToPurchase)
         {
             towerToBuild = Instantiate(tower.turretPrefab);
+            towerToBuild.AddComponent<Tower>();
+            tower.purchased = true;
             buildingModeOn = true;
-            money.Value -= tower.costToPurchase;
+            towerToBuildValue = tower.costToPurchase;
+            money.Value -= towerToBuildValue;
         }
     }
 
@@ -109,12 +113,19 @@ public class TowerInfoDisplay : MonoBehaviour
             {
                 RaycastHit2D hitInfo = Physics2D.Raycast(mousePosition, Vector2.zero, 100f, whatIsBuildingSpot);
 
-                if (hitInfo.collider != null)
+                if (hitInfo.collider != null && hitInfo.transform.gameObject.GetComponent<TowerSpot>().IsSpotEmpty())
                 {
-                    //hitInfo.transform.gameObject.GetComponent<TowerSpot>().placedTower = towerToBuild;
+                    hitInfo.transform.gameObject.GetComponent<TowerSpot>().placedTower = towerToBuild.GetComponent<Tower>();
                     towerToBuild.transform.position = hitInfo.transform.position;
                     buildingModeOn = false;
                     towerToBuild = null;
+                }
+                else
+                {
+                    Destroy(towerToBuild);
+                    buildingModeOn = false;
+                    towerToBuild = null;
+                    money.Value += towerToBuildValue;
                 }
             }
         }

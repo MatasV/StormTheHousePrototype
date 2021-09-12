@@ -11,6 +11,7 @@ namespace TowerLogic
         private int shootTimeInitialValue = 200;
 
         private EnemySpawner enemySpawner;
+
         public override void Shoot()
         {
             var activeEnemies = enemySpawner.GetActiveEnemies();
@@ -46,6 +47,15 @@ namespace TowerLogic
         {
             base.Init();
             enemySpawner = GetComponent<EnemySpawner>();
+        }
+
+        private void OnEnable()
+        {
+            base.Init();
+
+            var slowUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Range);
+
+            enemySpawner = FindObjectOfType<EnemySpawner>();
         }
     }
 }
