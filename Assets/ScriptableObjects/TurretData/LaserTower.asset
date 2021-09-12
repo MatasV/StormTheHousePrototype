@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3aad7355af6495d81420995b28766f0, type: 3}
+  m_Name: LaserTower
+  m_EditorClassIdentifier: 
+  turretPrefab: {fileID: 9135534317535725783, guid: 1915d25c06f71754ea779aa0e293d87c, type: 3}
+  towerName: Laset Tower
+  damage: 3
+  fireRate: 1
+  mainSprite: {fileID: 21300000, guid: 17ffe62776e7d8a4a8e1e314b60104bf, type: 3}
+  costToPurchase: 8000
+  purchased: 0
+  description: The M6 Laser Tower fires a very powerful blast of energy at the toughest
+    enemy on the screen

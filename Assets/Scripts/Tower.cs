@@ -8,7 +8,6 @@ using UnityEngine.Serialization;
 public abstract class Tower : MonoBehaviour
 {
     [FormerlySerializedAs("turretData")] public TowerData towerData;
-    public UnityEvent onShoot = new UnityEvent();
 
     [Serializable]
     public class UpgradeableItem

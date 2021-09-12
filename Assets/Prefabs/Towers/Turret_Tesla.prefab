@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9135534317535725781}
   - component: {fileID: 9135534317535725780}
-  - component: {fileID: -5116273769102769340}
-  - component: {fileID: 582240708}
+  - component: {fileID: -5532139954702745055}
+  - component: {fileID: 9105348890564367820}
   m_Layer: 0
-  m_Name: Turret_Fan
+  m_Name: Turret_Tesla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 83c4955e2b763604ab72bc12412953c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 794032b87cb715c42b72d7773902927a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5116273769102769340
+--- !u!114 &-5532139954702745055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,29 +94,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 9135534317535725783}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0149ef4a86a661142acf00d54dadc312, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ba128e5b61d2c64fade4cf0c3374aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: 7af0e5339365d214383705bfefa08308, type: 2}
+  towerData: {fileID: 11400000, guid: b1df41742be2bb541bb6b812b2bff20b, type: 2}
   upgradeItemsList:
-  - upgradeType: 6
+  - upgradeType: 0
     value: 0
-    startingValue: 0.04
-    valueIncrement: 0.01
-    maxValue: 0.08
+    startingValue: 2
+    valueIncrement: 2
+    maxValue: 10
     timesUpgraded: 0
-    startingCost: 700
+    startingCost: 2000
     costIncrement: 1.2
   - upgradeType: 3
     value: 0
-    startingValue: 3.5
+    startingValue: 3
     valueIncrement: 0.5
-    maxValue: 5.5
+    maxValue: 4.5
     timesUpgraded: 0
-    startingCost: 1000
+    startingCost: 2000
     costIncrement: 1.2
-  fanRange: {fileID: 582240708}
---- !u!61 &582240708
+  - upgradeType: 7
+    value: 0
+    startingValue: 60
+    valueIncrement: 5
+    maxValue: 90
+    timesUpgraded: 0
+    startingCost: 2000
+    costIncrement: 1.2
+  fanRange: {fileID: 9105348890564367820}
+  shootTimeInitialValue: 200
+--- !u!61 &9105348890564367820
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,16 +138,16 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.187603, y: 0}
+  m_Offset: {x: -2.70163, y: -1.0277092}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.94, y: 0.97}
+    oldSize: {x: 0.6, y: 0.9}
     newSize: {x: 1.36, y: 1.06}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.5, y: 1.3816111}
+  m_Size: {x: 3.418415, y: 2.9554186}
   m_EdgeRadius: 0
