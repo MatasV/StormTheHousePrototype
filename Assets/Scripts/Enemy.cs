@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     private bool moving = false;
 
-    public List<StatusEffect> statusEffects = new List<StatusEffect>();
+    public readonly List<Tuple<StatusEffect, GameObject>> statusEffects = new List<Tuple<StatusEffect, GameObject>>();
     
     public virtual void Init()
     {
@@ -39,13 +39,24 @@ public class Enemy : MonoBehaviour
         {
             if (statusEffect.GetType() == effect.GetType())
             {
-                statusEffect.timer += effect.timer;
+                statusEffect.Item1.timer += effect.timer;
                 return;
             }
         }
-
-        effect.enemy = this;
-        statusEffects.Add(effect);
+        
+        effect.EnableEffect(this);
+        
+        if (effect.statusObj != null)
+        {
+            var obj = Instantiate(effect.statusObj);
+            statusEffects.Add(new Tuple<StatusEffect, GameObject>(effect, obj));
+            
+        }
+        else
+        {
+            statusEffects.Add(new Tuple<StatusEffect, GameObject>(effect, null));
+        }
+        
     }
     private void Update()
     {
@@ -62,9 +73,19 @@ public class Enemy : MonoBehaviour
             InvokeRepeating(nameof(DamageHouse), 0f, enemyData.fireRate);
         }
 
-        foreach (var statusEffect in statusEffects)
+        for (var index = statusEffects.Count; index >0 ; index--)
         {
-            statusEffect.Tick();
+            var statusEffect = statusEffects[index];
+            statusEffect.Item1.Tick();
+            if (statusEffect.Item1.timer <= 0)
+            {
+                statusEffect.Item1.DisableEffect();
+                if (statusEffect.Item2 != null)
+                {
+                    Destroy(statusEffect.Item2);
+                }
+                statusEffects.Remove(statusEffect); //not sure if this is gonna work, I hope it will?
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TowerLogic
 {
@@ -8,7 +9,7 @@ namespace TowerLogic
     {
         private float shootTimer;
         
-        [SerializeField] private BoxCollider2D fanRange;
+        [FormerlySerializedAs("fanRange")] [SerializeField] private BoxCollider2D range;
 
         [SerializeField]
         private int shootTimeInitialValue = 200;
@@ -19,7 +20,7 @@ namespace TowerLogic
         public override void Shoot()
         {
             var colliders = new List<Collider2D>();
-            fanRange.GetContacts(colliders);
+            range.GetContacts(colliders);
 
             foreach (var col in colliders)
             {
@@ -48,9 +49,9 @@ namespace TowerLogic
             var rangeUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Range);
             
             rangeUpgrade.onUpgraded +=
-                item => fanRange.size = new Vector2(item.value, fanRange.size.y);
+                item => range.size = new Vector2(item.value, range.size.y);
 
-            fanRange.size = new Vector2(rangeUpgrade.value, fanRange.size.y);
+            range.size = new Vector2(rangeUpgrade.value, range.size.y);
             
             fireRateUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.FireRate);
             damageUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Damage);
@@ -65,9 +66,9 @@ namespace TowerLogic
             var rangeUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Range);
             
             rangeUpgrade.onUpgraded +=
-                item => fanRange.size = new Vector2(item.value, fanRange.size.y);
+                item => range.size = new Vector2(item.value, range.size.y);
 
-            fanRange.size = new Vector2(rangeUpgrade.value, fanRange.size.y);
+            range.size = new Vector2(rangeUpgrade.value, range.size.y);
             
             fireRateUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.FireRate);
             damageUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Damage);

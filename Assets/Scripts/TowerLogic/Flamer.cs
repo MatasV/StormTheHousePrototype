@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TowerLogic
@@ -8,26 +9,27 @@ namespace TowerLogic
         private float shootTimer;
 
         [SerializeField]
-        private int shootTimeInitialValue = 200;
+        private int shootTimeInitialValue = 6;
 
         private EnemySpawner enemySpawner;
+        [SerializeField] private BoxCollider2D range;
+        
+        private Tower.UpgradeableItem fireRateUpgrade;
+        private Tower.UpgradeableItem damageUpgrade;
         public override void Shoot()
         {
-            var activeEnemies = enemySpawner.GetActiveEnemies();
-        
-            Debug.Log("Shake");
-            foreach (var enemy in activeEnemies)
+            Debug.Log("shoot");
+            var colliders = new Collider2D[1000];
+            var howManyOverlappingColliders = Physics2D.GetContacts(range, colliders);
+
+            for (var index = 0; index < howManyOverlappingColliders; index++)
             {
-                switch (enemy.enemyType)
+                var col = colliders[index];
+                Debug.Log("found coll");
+                var enemy = col.GetComponent<Enemy>();
+                if (enemy != null)
                 {
-                    case Enemy.EnemyType.Foot:
-                        enemy.OnHit(towerData.damage);
-                        break;
-                    case Enemy.EnemyType.Armored:
-                        enemy.Trip();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
+                    enemy.AddEffect(new Flaming() {timer = 5f, damage = damageUpgrade.value});
                 }
             }
         }
@@ -35,7 +37,7 @@ namespace TowerLogic
         public void Update()
         {
             shootTimer += Time.deltaTime;
-            if (shootTimer >= (shootTimeInitialValue-towerData.fireRate)/60f) //turning to seconds
+            if (shootTimer >= (shootTimeInitialValue-fireRateUpgrade.value))
             {
                 shootTimer = 0;
                 Shoot();
@@ -45,7 +47,35 @@ namespace TowerLogic
         public override void Init()
         {
             base.Init();
-            enemySpawner = GetComponent<EnemySpawner>();
+            
+            var rangeUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Range);
+            
+            rangeUpgrade.onUpgraded +=
+                item => range.size = new Vector2(item.value, range.size.y);
+
+            range.size = new Vector2(rangeUpgrade.value, range.size.y);
+            
+            fireRateUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.FireRate);
+            damageUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Damage);
+
+            enemySpawner = FindObjectOfType<EnemySpawner>();
+        }
+
+        private void OnEnable()
+        {
+            base.Init();
+            
+            var rangeUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Range);
+            
+            rangeUpgrade.onUpgraded +=
+                item => range.size = new Vector2(item.value, range.size.y);
+
+            range.size = new Vector2(rangeUpgrade.value, range.size.y);
+            
+            fireRateUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.FireRate);
+            damageUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Damage);
+
+            enemySpawner = FindObjectOfType<EnemySpawner>();
         }
     }
 }

@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.418415, y: 2.9554186}
+  m_Size: {x: 3.418415, y: 6.77}
   m_EdgeRadius: 0
 --- !u!114 &-509208491827961856
 MonoBehaviour:
@@ -135,9 +135,9 @@ MonoBehaviour:
     costIncrement: 1.2
   - upgradeType: 3
     value: 0
-    startingValue: 50
-    valueIncrement: 5
-    maxValue: 70
+    startingValue: 3.5
+    valueIncrement: 0.2
+    maxValue: 4.3
     timesUpgraded: 0
     startingCost: 1200
     costIncrement: 1.2
@@ -149,4 +149,5 @@ MonoBehaviour:
     timesUpgraded: 0
     startingCost: 2000
     costIncrement: 1.2
-  shootTimeInitialValue: 200
+  shootTimeInitialValue: 6
+  range: {fileID: 9105348890564367820}
