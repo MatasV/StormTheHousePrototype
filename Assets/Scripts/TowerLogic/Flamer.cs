@@ -78,9 +78,15 @@ namespace TowerLogic
             enemySpawner = FindObjectOfType<EnemySpawner>();
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
             Debug.Log("entered");
         }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            Debug.Log("enteredt");
+        }
+        
     }
 }
