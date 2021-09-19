@@ -25,11 +25,10 @@ namespace TowerLogic
             for (var index = 0; index < howManyOverlappingColliders; index++)
             {
                 var col = colliders[index];
-                Debug.Log("found coll");
                 var enemy = col.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.AddEffect(new Flaming() {timer = 5f, damage = damageUpgrade.value});
+                    enemy.AddEffect(new Flaming(5f, damageUpgrade.value));
                 }
             }
         }
@@ -77,15 +76,10 @@ namespace TowerLogic
 
             enemySpawner = FindObjectOfType<EnemySpawner>();
         }
-
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            Debug.Log("entered");
-        }
+        
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("enteredt");
         }
         
     }

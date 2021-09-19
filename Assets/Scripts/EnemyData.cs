@@ -10,4 +10,5 @@ public class EnemyData : ScriptableObject
     public float speed;
     public float fireRate;
     public GameObject enemyPrefab;
+    public float health;
 }
