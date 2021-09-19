@@ -14,6 +14,7 @@ public class TowerInfoDisplay : MonoBehaviour
     [SerializeField] private TMP_Text towerNotPurchasedDescriptionText;
 
     [SerializeField] private Button purchaseButton;
+    [SerializeField] private Button sellButton;
 
     [Header("Tower Upgrade Display")] [SerializeField]
     private Image towerPurchasedSpriteImage;
@@ -25,12 +26,14 @@ public class TowerInfoDisplay : MonoBehaviour
 
     [SerializeField] private PurchasingPanelController purchasingPanelController;
 
-    [Header("Tower Placement Properties:")]
+    [Header("Tower Placement/Selling Properties:")]
     [SerializeField] private LayerMask whatIsBuildingSpot;
     private GameObject towerToBuild;
     private int towerToBuildValue;
+    private int baseTowerSellingValue;
     private Vector3 mousePosition;
     private bool buildingModeOn = false;
+    private bool isSellingButtonPressed = false;
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class TowerInfoDisplay : MonoBehaviour
     private void Update()
     {
         FollowMouse();
+        CheckSellingInput();
     }
 
     private void Setup()
@@ -66,6 +70,9 @@ public class TowerInfoDisplay : MonoBehaviour
 
         purchaseButton.onClick.RemoveAllListeners();
         purchaseButton.onClick.AddListener(() => Purchase(tower));
+
+        sellButton.onClick.RemoveAllListeners();
+        sellButton.onClick.AddListener(() => Sell(tower));
     }
 
     public void DisplayPurchasedTowerInfo(Tower tower)
@@ -86,6 +93,30 @@ public class TowerInfoDisplay : MonoBehaviour
         {
             var upgradeUI = Instantiate(upgradeUIObject, upgradeButtonsParent).GetComponent<TowerUpgrade>();
             upgradeUI.Init(tower.upgradeItemsList[i]);
+        }
+    }
+
+    public void Sell(TowerData tower)
+    {
+        isSellingButtonPressed = true;
+        baseTowerSellingValue = tower.baseSellPrice;
+    }
+
+    private void CheckSellingInput()
+    {
+        if (isSellingButtonPressed == true && Input.GetMouseButtonDown(0))
+        {
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hitInfo = Physics2D.Raycast(mousePosition, Vector2.zero, 100f, whatIsBuildingSpot);
+
+            if (!hitInfo.transform.gameObject.GetComponent<TowerSpot>().IsSpotEmpty())
+            {
+                GameObject soldTower = hitInfo.collider.GetComponent<TowerSpot>().placedTower.gameObject;
+                Destroy(soldTower);
+                hitInfo.collider.GetComponent<TowerSpot>().placedTower = null;
+                money.Value += baseTowerSellingValue;
+                isSellingButtonPressed = false;
+            }
         }
     }
 

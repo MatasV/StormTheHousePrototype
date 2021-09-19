@@ -16,7 +16,7 @@ namespace TowerLogic
         {
             var activeEnemies = enemySpawner.GetActiveEnemies();
         
-            Debug.Log("Shake");
+            //Debug.Log("Shake");
             foreach (var enemy in activeEnemies)
             {
                 switch (enemy.enemyType)
