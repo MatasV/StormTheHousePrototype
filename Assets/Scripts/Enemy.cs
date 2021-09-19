@@ -76,19 +76,6 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        if (!moving) return;
-        
-        var distCovered = (Time.time - startTime) * enemyData.speed;
-        var fractionOfJourney = distCovered / journeyLength;
-        
-        rb.position = Vector3.Lerp(startingPosition, locationToDamage, fractionOfJourney);
-
-        if (rb.position.Equals(locationToDamage))
-        {
-            moving = false;
-            InvokeRepeating(nameof(DamageHouse), 0f, enemyData.fireRate);
-        }
-
         //Ticking Effects
         for (var index = statusEffects.Count -1; index >= 0 ; index--)
         {
@@ -105,6 +92,19 @@ public class Enemy : MonoBehaviour
                 }
                 statusEffects.Remove(statusEffect); //not sure if this is gonna work, I hope it will?
             }
+        }
+        
+        if (!moving) return;
+        
+        var distCovered = (Time.time - startTime) * enemyData.speed;
+        var fractionOfJourney = distCovered / journeyLength;
+        
+        rb.position = Vector3.Lerp(startingPosition, locationToDamage, fractionOfJourney);
+
+        if (rb.position.Equals(locationToDamage))
+        {
+            moving = false;
+            InvokeRepeating(nameof(DamageHouse), 0f, enemyData.fireRate);
         }
     }
 
