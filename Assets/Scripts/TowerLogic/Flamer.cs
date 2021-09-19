@@ -22,6 +22,8 @@ namespace TowerLogic
             var colliders = new Collider2D[1000];
             var howManyOverlappingColliders = Physics2D.GetContacts(range, colliders);
 
+            Debug.Log($"Found {howManyOverlappingColliders} enemies ");
+            
             for (var index = 0; index < howManyOverlappingColliders; index++)
             {
                 var col = colliders[index];

@@ -13,11 +13,18 @@ public class Flaming : StatusEffect
 
     public override void Tick()
     {
-        if (!enabled) return;
+        if (!enabled)
+        {
+            Debug.Log($"[FLAMING] effect not enabled");
+            return;
+        }
         base.Tick();
         Debug.Log($"damaging enemy {enemy.name}");
         enemy.OnHit(damage);
     }
-    
-    public override void DisableEffect() { }
+
+    public override void DisableEffect()
+    {
+        Debug.Log("Disabling Effect");
+    }
 }

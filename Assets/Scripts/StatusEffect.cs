@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public abstract class StatusEffect
+public class StatusEffect
 {
     public float timer;
     public Enemy enemy;
@@ -13,7 +13,6 @@ public abstract class StatusEffect
     public virtual void Tick()
     {
         timer -= Time.deltaTime;
-        if(timer <= 0f) DisableEffect();
     }
 
     public virtual void EnableEffect(Enemy _enemy)
@@ -30,5 +29,5 @@ public abstract class StatusEffect
         }
     }
 
-    public abstract void DisableEffect();
+    public virtual void DisableEffect() { }
 }

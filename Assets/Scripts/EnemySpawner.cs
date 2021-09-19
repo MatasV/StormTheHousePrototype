@@ -89,6 +89,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 var enemyClone = Instantiate(enemyData.enemyPrefab, GetSpawnPoint(), Quaternion.identity, this.transform).GetComponent<Enemy>();
 
+                enemyClone.name += enemyIndex;
+                
                 if (enemyClone != null) enemyClone.Init();
                 else
                 {

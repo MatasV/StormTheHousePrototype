@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,7 +25,14 @@ public class Enemy : MonoBehaviour
 
     private bool moving = false;
 
-    public readonly List<Tuple<StatusEffect, GameObject>> statusEffects = new List<Tuple<StatusEffect, GameObject>>();
+    [Serializable]
+    public struct ActiveEffectData
+    {
+        public StatusEffect effect;
+        public GameObject visualEffect;
+    }
+    
+    public List<ActiveEffectData> statusEffects = new List<ActiveEffectData>();
     
     public virtual void Init()
     {
@@ -44,10 +52,10 @@ public class Enemy : MonoBehaviour
         Debug.Log($"adding effect {effect.GetType()}");
         foreach (var statusEffect in statusEffects)
         {
-            if (statusEffect.GetType() == effect.GetType())
+            if (statusEffect.effect.GetType() == effect.GetType())
             {
                 Debug.Log("effect found, extending");
-                statusEffect.Item1.timer += effect.timer;
+                statusEffect.effect.timer += effect.timer;
                 return;
             }
         }
@@ -55,18 +63,16 @@ public class Enemy : MonoBehaviour
         Debug.Log("effect not found, adding");
         effect.EnableEffect(this);
         
+        //spawn status effect obj
         if (effect.statusObj != null)
         {
             var obj = Instantiate(effect.statusObj);
-            statusEffects.Add(new Tuple<StatusEffect, GameObject>(effect, obj));
+            statusEffects.Add(new ActiveEffectData(){ effect = effect, visualEffect = obj});
         }
         else
         {
-            statusEffects.Add(new Tuple<StatusEffect, GameObject>(effect, null));
+            statusEffects.Add(new ActiveEffectData(){ effect = effect, visualEffect = null});
         }
-        
-        
-        
     }
     private void Update()
     {
@@ -86,15 +92,16 @@ public class Enemy : MonoBehaviour
         //Ticking Effects
         for (var index = statusEffects.Count -1; index >= 0 ; index--)
         {
-            Debug.Log("found effect ticking");
+            Debug.Log($"found effect ticking {gameObject.name}");
             var statusEffect = statusEffects[index];
-            statusEffect.Item1.Tick();
-            if (statusEffect.Item1.timer <= 0)
+            statusEffect.effect.Tick();
+            if (statusEffect.effect.timer <= 0)
             {
-                statusEffect.Item1.DisableEffect();
-                if (statusEffect.Item2 != null)
+                Debug.Log("disabling effect");
+                statusEffect.effect.DisableEffect();
+                if (statusEffect.visualEffect != null)
                 {
-                    Destroy(statusEffect.Item2);
+                    Destroy(statusEffect.visualEffect);
                 }
                 statusEffects.Remove(statusEffect); //not sure if this is gonna work, I hope it will?
             }
