@@ -11,8 +11,9 @@ public class Flaming : StatusEffect
         Debug.Log($"Created flaming effect, damage {damage}, timer {timer}");
     }
 
-    public override void Tick()  
+    public override void Tick()
     {
+        if (!enabled) return;
         base.Tick();
         Debug.Log($"damaging enemy {enemy.name}");
         enemy.OnHit(damage);
