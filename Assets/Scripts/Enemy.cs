@@ -99,7 +99,8 @@ public class Enemy : MonoBehaviour
         var distCovered = (Time.time - startTime) * enemyData.speed;
         var fractionOfJourney = distCovered / journeyLength;
         
-        rb.position = Vector3.Lerp(startingPosition, locationToDamage, fractionOfJourney);
+        var step = enemyData.speed * Time.deltaTime; // calculate distance to move
+        rb.position  = Vector3.MoveTowards(transform.position, locationToDamage, step);
 
         if (rb.position.Equals(locationToDamage))
         {
@@ -132,6 +133,12 @@ public class Enemy : MonoBehaviour
 
     public virtual void Trip()
     {
-        Debug.Log("Tripped");
+        moving = false;
+        Invoke(nameof(GetUp), 2f);
+    }
+
+    private void GetUp()
+    {
+        moving = true;
     }
 }

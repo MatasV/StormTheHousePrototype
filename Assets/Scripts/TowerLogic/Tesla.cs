@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,6 +18,7 @@ namespace TowerLogic
 
         private Tower.UpgradeableItem fireRateUpgrade;
         private Tower.UpgradeableItem damageUpgrade;
+        [SerializeField] private LineRenderer lineRenderer;
         public override void Shoot()
         {
             var colliders = new List<Collider2D>();
@@ -27,11 +29,34 @@ namespace TowerLogic
                 var enemy = col.GetComponent<Enemy>();
                 if (enemy != null)
                 {
-                    enemy.OnHit(damageUpgrade.value);
+                    Debug.Log("attacking pre");
+                    StartCoroutine(ZapEnemy(enemy, damageUpgrade.value));
+                    return;
                 } 
             }
         }
+        private IEnumerator ZapEnemy(Enemy enemy, float damage)
+        {
+            Debug.Log("attacking post");
+            lineRenderer.enabled = true;
+            lineRenderer.positionCount = 2;
 
+            var teslaPosition = transform.position;
+            teslaPosition.z = -3;
+
+            var enemyPos = enemy.transform.position;
+            enemyPos.z = -3;
+            
+            lineRenderer.SetPositions(new[] {teslaPosition, enemyPos});
+            
+            for (int i = 0; i < 75; i++)
+            {
+                yield return null;
+            }
+            enemy.OnHit(damage);
+            lineRenderer.enabled = false;
+            yield return null;
+        }
         public void Update()
         {
             shootTimer += Time.deltaTime;

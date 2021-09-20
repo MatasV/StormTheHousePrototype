@@ -16,16 +16,16 @@ namespace TowerLogic
         {
             var activeEnemies = enemySpawner.GetActiveEnemies();
         
-            Debug.Log("Shake");
+            CameraShake.instance.ShakeCamera(0.1f, 0.05f);
             foreach (var enemy in activeEnemies)
             {
                 switch (enemy.enemyType)
                 {
                     case Enemy.EnemyType.Foot:
-                        enemy.OnHit(towerData.damage);
+                        enemy.Trip();
                         break;
                     case Enemy.EnemyType.Armored:
-                        enemy.Trip();
+                        enemy.OnHit(towerData.damage);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -52,9 +52,6 @@ namespace TowerLogic
         private void OnEnable()
         {
             base.Init();
-
-            var slowUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Range);
-
             enemySpawner = FindObjectOfType<EnemySpawner>();
         }
     }
