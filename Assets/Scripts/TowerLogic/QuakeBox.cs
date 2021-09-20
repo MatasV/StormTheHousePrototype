@@ -15,9 +15,10 @@ namespace TowerLogic
         public override void Shoot()
         {
             var activeEnemies = enemySpawner.GetActiveEnemies();
-        
+            
             CameraShake.instance.ShakeCamera(0.1f, 0.05f);
-            foreach (var enemy in activeEnemies)
+                //Debug.Log("Shake");
+                foreach (var enemy in activeEnemies)
             {
                 switch (enemy.enemyType)
                 {

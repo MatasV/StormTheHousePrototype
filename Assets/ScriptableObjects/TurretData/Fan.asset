@@ -18,6 +18,7 @@ MonoBehaviour:
   fireRate: 1
   mainSprite: {fileID: 21300000, guid: c69247ad9a84abf40812bc1d8d000ae9, type: 3}
   costToPurchase: 2000
+  baseSellPrice: 1000
   purchased: 0
   description: This giant fan has a slowing effect that will stop those puny swordsmen
     right in their tracks. LOL!

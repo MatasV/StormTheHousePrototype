@@ -9,6 +9,7 @@ public class TowerData : ScriptableObject
     public int fireRate;
     public Sprite mainSprite;
     public int costToPurchase;
+    public int baseSellPrice;
     public bool purchased;
     [TextArea(3,10)] public string description;
 }

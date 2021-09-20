@@ -18,6 +18,7 @@ MonoBehaviour:
   fireRate: 1
   mainSprite: {fileID: 21300000, guid: 17ffe62776e7d8a4a8e1e314b60104bf, type: 3}
   costToPurchase: 8000
+  baseSellPrice: 4000
   purchased: 0
   description: The M6 Laser Tower fires a very powerful blast of energy at the toughest
     enemy on the screen
