@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
     private Vector3 startingPosition;
     private float journeyLength;
     private float startTime;
-    private float health;
+    public float health;
 
     private bool moving = false;
 
@@ -119,11 +119,12 @@ public class Enemy : MonoBehaviour
     public virtual void OnHit(float damage)
     {
         Debug.Log("i GOT HIT!");
-        healthSlider.value = health;
         if ((health -= damage) <= 0f)
         {
             Die();
         }
+        
+        healthSlider.value = health;
     }
 
     public virtual void DamageHouse()
