@@ -12,20 +12,17 @@ public class UpgradeDisplay : MonoBehaviour
     
     [SerializeField] private Upgrade repairmenUpgrade;
     [SerializeField] private Upgrade shooterUpgrade;
-    [SerializeField] private Upgrade wallUpgrade;
-    
+
     private void Awake()
     {
         repairmenUpgrade.onUpgradeChanged.AddListener(DisplayRepairmen);
         shooterUpgrade.onUpgradeChanged.AddListener(DisplayShooters);
-        wallUpgrade.onUpgradeChanged.AddListener(DisplayWall);
     }
 
     private void Start()
     {
         DisplayRepairmen();
         DisplayShooters();
-        DisplayWall();
     }
 
     private void DisplayRepairmen()
@@ -37,16 +34,10 @@ public class UpgradeDisplay : MonoBehaviour
     {
         shooterDisplay.text = "Shooters: "+shooterUpgrade.level.ToString();
     }
-
-    private void DisplayWall()
-    {
-        wallLevelDisplay.text = "Wall Level: "+wallUpgrade.level.ToString();
-    }
-
+    
     private void OnDestroy()
     {
         repairmenUpgrade.onUpgradeChanged.RemoveListener(DisplayRepairmen);
         shooterUpgrade.onUpgradeChanged.RemoveListener(DisplayShooters);
-        wallUpgrade.onUpgradeChanged.RemoveListener(DisplayWall);
     }
 }

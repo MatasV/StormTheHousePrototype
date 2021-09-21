@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 9135534317535725780}
   - component: {fileID: 9105348890564367820}
   - component: {fileID: -509208491827961856}
+  - component: {fileID: 406722396}
   m_Layer: 0
   m_Name: Turret_Flamer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9135534317535725781
 Transform:
   m_ObjectHideFlags: 0
@@ -151,3 +152,24 @@ MonoBehaviour:
     costIncrement: 1.2
   shootTimeInitialValue: 6
   range: {fileID: 9105348890564367820}
+--- !u!50 &406722396
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9135534317535725783}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7

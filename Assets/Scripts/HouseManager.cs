@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TowerLogic;
 using UnityEngine;
 
 public class HouseManager : MonoBehaviour
@@ -35,7 +36,7 @@ public class HouseManager : MonoBehaviour
         houseHealth.maxHealth.Value = healthUpgrade.level * 100;
         houseHealth.Value = houseHealth.maxHealth.Value;
         
-        healthUpgrade.onUpgradeChanged.AddListener(SyncUpgrades);
+
     }
     
     private void SyncUpgrades()
@@ -47,5 +48,25 @@ public class HouseManager : MonoBehaviour
     private void OnDestroy()
     {
         healthUpgrade.onUpgradeChanged.RemoveListener(SyncUpgrades);
+        roundStarted.valueChangeEvent.RemoveListener(SetupShieldHealth);
+    }
+
+    private void Awake()
+    {
+        healthUpgrade.onUpgradeChanged.AddListener(SyncUpgrades);
+        roundStarted.valueChangeEvent.AddListener(SetupShieldHealth);
+    }
+
+    private void SetupShieldHealth()
+    {
+        if (roundStarted.Value == false) return;
+        
+        houseHealth.shieldHealth.Value = 0;
+
+        foreach (var shieldGen in FindObjectsOfType<ShieldGenerator>())
+        {
+            houseHealth.shieldHealth.Value += (int)shieldGen.upgradeItemsList
+                .Find(x => x.upgradeType == Tower.UpgradeableItem.UpgradeType.Shield).value;
+        }
     }
 }
