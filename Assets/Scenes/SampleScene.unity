@@ -946,7 +946,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.8396226, g: 0.10693307, b: 0.10693307, a: 1}
   m_FlipX: 0
@@ -5040,6 +5040,7 @@ MonoBehaviour:
   healthUpgrade: {fileID: 11400000, guid: 849e4d79ec2a0574fbe5ea87d15dc2b3, type: 2}
   repairmenUpgrade: {fileID: 11400000, guid: de3e35a70ea2f814f8e4d968151f4804, type: 2}
   roundStarted: {fileID: 11400000, guid: 46338d552440bf64ba73bb3aacb28f65, type: 2}
+  towerSetupUpdated: {fileID: 11400000, guid: 8406888d2ab039547ba4c6516c35e2e1, type: 2}
 --- !u!1 &773009640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5926,7 +5927,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.8396226, g: 0.10693307, b: 0.10693307, a: 1}
   m_FlipX: 0
@@ -7534,7 +7535,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.8396226, g: 0.10693307, b: 0.10693307, a: 1}
   m_FlipX: 0
@@ -9314,7 +9315,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 50
   m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
   m_Color: {r: 0.8396226, g: 0.10693307, b: 0.10693307, a: 1}
   m_FlipX: 0
@@ -12268,6 +12269,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5461409290849793210, guid: 41a3cda12682d484a9691ddbf286a338, type: 3}
+      propertyPath: towerUpdatedEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 8406888d2ab039547ba4c6516c35e2e1, type: 2}
     - target: {fileID: 9135534317535725781, guid: 41a3cda12682d484a9691ddbf286a338, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -14556,7 +14561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   repairmenDisplay: {fileID: 53999378}
   shooterDisplay: {fileID: 979219120}
-  wallLevelDisplay: {fileID: 53999378}
   repairmenUpgrade: {fileID: 11400000, guid: de3e35a70ea2f814f8e4d968151f4804, type: 2}
   shooterUpgrade: {fileID: 11400000, guid: 047e10c05397eb744ab34607a05fe3ef, type: 2}
 --- !u!114 &2109553312

@@ -7,31 +7,19 @@ public class ShieldDisplay : MonoBehaviour
 {
     [SerializeField] private HouseHealth houseHealth;
 
-    private int previousShieldValue = 0;
-    private int maxValue;
-
     [SerializeField] private TMP_Text displayText;
     private void Awake()
     {
-        houseHealth.shieldHealth.valueChangeEvent.AddListener(SetupHealthDisplay);
+        houseHealth.shieldLevel.valueChangeEvent.AddListener(SetupShieldDisplay);
     }
 
-    private void SetupHealthDisplay()
+    private void SetupShieldDisplay()
     {
-        if (previousShieldValue > houseHealth.shieldHealth.Value)
-        {
-            var currentValuePercentage = houseHealth.shieldHealth.Value / maxValue * 100 ;
-
-            displayText.text = $"Shield: {currentValuePercentage}%";
-        }
-        else
-        {
-            maxValue = houseHealth.shieldHealth.Value;
-        }
+        displayText.text = $"Shield: {houseHealth.shieldLevel.Value}%";
     }
 
     private void OnDestroy()
     {
-        houseHealth.shieldHealth.valueChangeEvent.RemoveListener(SetupHealthDisplay);
+        houseHealth.shieldLevel.valueChangeEvent.RemoveListener(SetupShieldDisplay);
     }
 }

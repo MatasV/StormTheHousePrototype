@@ -12,6 +12,7 @@ public class HouseManager : MonoBehaviour
 
     [SerializeField] private Upgrade repairmenUpgrade;
     [SerializeField] private SharedBool roundStarted;
+    [SerializeField] private SharedVoid towerSetupUpdated;
 
     private const float HealTime = 3f;
     private float healTimer = 0f;
@@ -35,8 +36,6 @@ public class HouseManager : MonoBehaviour
         houseX.Value = transform.position.x;
         houseHealth.maxHealth.Value = healthUpgrade.level * 100;
         houseHealth.Value = houseHealth.maxHealth.Value;
-        
-
     }
     
     private void SyncUpgrades()
@@ -48,25 +47,35 @@ public class HouseManager : MonoBehaviour
     private void OnDestroy()
     {
         healthUpgrade.onUpgradeChanged.RemoveListener(SyncUpgrades);
-        roundStarted.valueChangeEvent.RemoveListener(SetupShieldHealth);
+        roundStarted.valueChangeEvent.RemoveListener(UpdateTowers);
+        towerSetupUpdated.valueChangeEvent.RemoveListener(UpdateTowers);
     }
 
     private void Awake()
     {
         healthUpgrade.onUpgradeChanged.AddListener(SyncUpgrades);
-        roundStarted.valueChangeEvent.AddListener(SetupShieldHealth);
+        roundStarted.valueChangeEvent.AddListener(UpdateTowers);
+        towerSetupUpdated.valueChangeEvent.AddListener(UpdateTowers);
     }
-
+    private void UpdateTowers()
+    {
+        SetupShieldHealth();
+    }
     private void SetupShieldHealth()
     {
         if (roundStarted.Value == false) return;
         
-        houseHealth.shieldHealth.Value = 0;
+        Debug.Log("Setting up shield");
+        houseHealth.shieldLevel.Value = 0;
 
-        foreach (var shieldGen in FindObjectsOfType<ShieldGenerator>())
+        var shields = FindObjectsOfType<ShieldGenerator>();
+        
+        for (var i = 0; i < shields.Length; i++)
         {
-            houseHealth.shieldHealth.Value += (int)shieldGen.upgradeItemsList
-                .Find(x => x.upgradeType == Tower.UpgradeableItem.UpgradeType.Shield).value;
+            var shieldGen = shields[i];
+
+            houseHealth.shieldLevel.Value += (int)shieldGen.upgradeItemsList
+                .Find(x => x.upgradeType == Tower.UpgradeableItem.UpgradeType.Shield).value / (i + 1);
         }
     }
 }
