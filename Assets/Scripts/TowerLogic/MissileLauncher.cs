@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TowerLogic
 {
@@ -10,26 +11,18 @@ namespace TowerLogic
         [SerializeField]
         private int shootTimeInitialValue = 200;
 
+        [SerializeField] private GameObject rocketObject;
         private EnemySpawner enemySpawner;
         public override void Shoot()
         {
             var activeEnemies = enemySpawner.GetActiveEnemies();
-        
-            Debug.Log("Shake");
-            foreach (var enemy in activeEnemies)
-            {
-                switch (enemy.enemyType)
-                {
-                    case Enemy.EnemyType.Foot:
-                        enemy.OnHit(towerData.damage);
-                        break;
-                    case Enemy.EnemyType.Armored:
-                        enemy.Trip();
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
-                }
-            }
+
+            if (activeEnemies.Length < 1) return;
+
+            var targetEnemy = activeEnemies[Random.Range(0, activeEnemies.Length - 1)];
+
+            var rocketObj = Instantiate(rocketObject, transform.position, Quaternion.identity);
+            rocketObj.GetComponent<Rocket>().Init(targetEnemy.transform.position, transform.position);
         }
 
         public void Update()
@@ -45,7 +38,13 @@ namespace TowerLogic
         public override void Init()
         {
             base.Init();
-            enemySpawner = GetComponent<EnemySpawner>();
+            enemySpawner = FindObjectOfType<EnemySpawner>();
+        }
+
+        private void OnEnable()
+        {
+            base.Init();
+            enemySpawner = FindObjectOfType<EnemySpawner>();
         }
     }
 }
