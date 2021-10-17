@@ -13,22 +13,29 @@ namespace TowerLogic
 
         [SerializeField] private GameObject rocketObject;
         private EnemySpawner enemySpawner;
+        
+        private Tower.UpgradeableItem fireRateUpgrade;
+        private Tower.UpgradeableItem damageUpgrade;
+        private Tower.UpgradeableItem missileUpgrade;
         public override void Shoot()
         {
             var activeEnemies = enemySpawner.GetActiveEnemies();
 
-            if (activeEnemies.Length < 1) return;
+            for (int i = 0; i < missileUpgrade.value; i++)
+            {
+                if (activeEnemies.Length < 1) return;
 
-            var targetEnemy = activeEnemies[Random.Range(0, activeEnemies.Length - 1)];
+                var targetEnemy = activeEnemies[Random.Range(0, activeEnemies.Length - 1)];
 
-            var rocketObj = Instantiate(rocketObject, transform.position, Quaternion.identity);
-            rocketObj.GetComponent<Rocket>().Init(targetEnemy.transform.position, transform.position);
+                var rocketObj = Instantiate(rocketObject, transform.position, Quaternion.identity);
+                rocketObj.GetComponent<Rocket>().Init(targetEnemy.transform.position, transform.position, damageUpgrade.value);
+            }
         }
 
         public void Update()
         {
             shootTimer += Time.deltaTime;
-            if (shootTimer >= (shootTimeInitialValue-towerData.fireRate)/60f) //turning to seconds
+            if (shootTimer >= (shootTimeInitialValue-fireRateUpgrade.value)/60f) //turning to seconds
             {
                 shootTimer = 0;
                 Shoot();
@@ -39,12 +46,20 @@ namespace TowerLogic
         {
             base.Init();
             enemySpawner = FindObjectOfType<EnemySpawner>();
+
+            fireRateUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.FireRate);
+            damageUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Damage);
+            missileUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Missiles);
         }
 
         private void OnEnable()
         {
             base.Init();
             enemySpawner = FindObjectOfType<EnemySpawner>();
+
+            fireRateUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.FireRate);
+            damageUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Damage);
+            missileUpgrade = upgradeItemsList.Find(x => x.upgradeType == UpgradeableItem.UpgradeType.Missiles);
         }
     }
 }

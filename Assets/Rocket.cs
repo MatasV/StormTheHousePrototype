@@ -10,14 +10,25 @@ public class Rocket : MonoBehaviour
     
     private float startTime;
     [SerializeField] private float journeyTime = 1f;
-    
-    public void Init(Vector2 targetPos, Vector2 startingPos)
+
+    private float damage;
+    private CircleCollider2D circleCollider2D;
+
+    private Vector3 previousPosition;
+    public void Init(Vector2 targetPos, Vector2 startingPos, float damageToDeal)
     {
         target = targetPos;
         start = startingPos;
 
         startTime = Time.time;
+
+        damage = damageToDeal;
+
+        circleCollider2D = GetComponent<CircleCollider2D>();
+        
     }
+    
+
     private void Update()
     {
         Vector3 center = (target + start) * 0.5F;
@@ -32,6 +43,23 @@ public class Rocket : MonoBehaviour
         transform.position = Vector3.Slerp(startRelCenter, endRelCenter, fracComplete);
         transform.position += center;
         
-        //transform.rotation =    
+        
+    }
+
+    private void Explode()
+    {
+        Debug.Log("shoot");
+        var colliders = new Collider2D[1000];
+        var howManyOverlappingColliders = Physics2D.GetContacts(circleCollider2D, colliders);
+
+        for (var index = 0; index < howManyOverlappingColliders; index++)
+        {
+            var col = colliders[index];
+            var enemy = col.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.AddEffect(new Flaming(5f, damage));
+            }
+        }
     }
 }

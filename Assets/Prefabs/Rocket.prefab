@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4610243063779977877}
   - component: {fileID: 4610243063779977876}
   - component: {fileID: 4610243063779977867}
+  - component: {fileID: 1503801244902878161}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -97,3 +98,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   journeyTime: 1
+--- !u!58 &1503801244902878161
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4610243063779977866}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.12155783}
+  serializedVersion: 2
+  m_Radius: 0.9243275
