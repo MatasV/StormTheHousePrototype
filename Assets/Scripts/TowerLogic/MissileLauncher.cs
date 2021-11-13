@@ -26,9 +26,10 @@ namespace TowerLogic
                 if (activeEnemies.Length < 1) return;
 
                 var targetEnemy = activeEnemies[Random.Range(0, activeEnemies.Length - 1)];
-
+                
+                Debug.Log(targetEnemy.name);
                 var rocketObj = Instantiate(rocketObject, transform.position, Quaternion.identity);
-                rocketObj.GetComponent<Rocket>().Init(targetEnemy.transform.position, transform.position, damageUpgrade.value);
+                rocketObj.GetComponent<Rocket>().Init(targetEnemy.transform.position, damageUpgrade.value);
             }
         }
 
